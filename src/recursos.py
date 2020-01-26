@@ -12,7 +12,7 @@ class Recurso:
 			self.__nombre = input("Introduzca el nombre: ")
 		while True:
 			self.__alcance = int(input("Introduzca el alcance del arma (0-> cuerpo a cuerpo 1-> a distancia): "))
-			if self._alcance < 1 and self._alcance > 0:
+			if self._alcance <= 1 and self._alcance >= 0:
 				break
 		self.__poderOfensivo = int(input("Introduzca el poder ofensivo del arma: "))
 		self.__poderDefensivo = int(input("Introduzca el poder defensivo del arma: "))
@@ -33,13 +33,20 @@ class Artefacto(Recurso):
 	def __init__(self):
 		self.__clase = 0
 		self.__poder = 0
+		self.__tipo = 2
 	def modificarAtributos(self,a):
 		super().modificarAtributos(self,a)
-
+		while True:
+			self.__manejo = int(input("Introduzca el manejo del arma ( 0 = una mano,  1 = dos manos): "))
+			if self.__manejo >= 0 and self.__manejo <= 1:
+				break
+		self.__clase = int(input("Introduzca la clase del arma (1.Ofensivo 2.Defensivo 3.Astucia): "))
+		self.__poder = int(input("Introduzca el poder del arma: "))
 
 class DonSobrenatural(Recurso):
 	def __init__(self):
 		self.__naturaleza = 0
+
 
 
 class Arma(Recurso):
@@ -49,5 +56,13 @@ class Arma(Recurso):
 	def modificarAtributos(self,a):
 		super().modificarAtributos(self,a)
 		self.__manejo = int(input("Introduzca el manejo del arma ( 0 = una mano,  1 = dos manos): "))
+	def display (self):
+		super().displayAtributos(self)
+		if self.__manejo == 0:
+			print ("Manejo: Una mano")
+		else:
+			print("Manejor: Dos manos")
+
+
 
 
