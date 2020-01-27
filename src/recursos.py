@@ -38,7 +38,7 @@ class Artefacto(Recurso):
 		super().modificarAtributos(self,a)
 		while True:
 			self.__manejo = int(input("Introduzca el manejo del arma ( 0 = una mano,  1 = dos manos): "))
-			if self.__manejo >= 0 and self.__manejo <= 1:
+			if self.__manejo == 0 or self.__manejo == 1:
 				break
 		self.__clase = int(input("Introduzca la clase del arma (1.Ofensivo 2.Defensivo 3.Astucia): "))
 		self.__poder = int(input("Introduzca el poder del arma: "))
@@ -46,9 +46,21 @@ class Artefacto(Recurso):
 class DonSobrenatural(Recurso):
 	def __init__(self):
 		self.__naturaleza = 0
-
-
-
+		self.__tipo = 3
+	def display(self):
+		super.displayAtributos(self)
+		if self.__naturaleza == 1:
+			print("Naturaleza: Salvaje")
+		else if self.__naturaleza == 2:
+			print ("Naturaleza: Mágica")
+		else:
+			print ("Naturaleza: Demoníaca")
+	def modificarAtributos(self, a):
+		super().modificarAtributos(self, a)
+		while True:
+			self.__naturaleza = int(input("Introduzca la naturaleza del Don Sobrenatural (1.Salvaje 2.Mágica 3.Demoníaca): "))
+			if self.__naturaleza == 1 or self.__naturaleza == 2 or self.__naturaleza == 3:
+				break
 class Arma(Recurso):
 	def __init__(self):
 		self.__manejo: 0 
